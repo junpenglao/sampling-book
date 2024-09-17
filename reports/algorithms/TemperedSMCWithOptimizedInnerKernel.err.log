@@ -37,8 +37,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['experiments = []', 'dimensions = []', 'particles = []', 'for dims in dimensions_to_try:', '    for exp_id, experiment in (']
-...
-['    ):', '        experiment_particles = smc_run_experiment(experiment, 0.5, 50, dims)', '        experiments.append(exp_id)', '        dimensions.append(dims)', '        particles.append(experiment_particles)']
+results = pd.DataFrame(
+    {"experiment": experiments, "dimensions": dimensions, "particles": particles}
+)
 -------------------
 
