@@ -455,7 +455,7 @@ u \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
@@ -536,28 +536,144 @@ u \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-    /* Turns off some styling */
-    progress {
-        /* gets rid of default border in Firefox and Opera. */
-        border: none;
-        /* Needs to be in here for Safari polyfill so background images work as expected. */
-        background-size: auto;
-    }
-    progress:not([value]), progress:not([value])::-webkit-progress-bar {
-        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
-    }
-    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-        background: #F44336;
-    }
-</style>
-</div><div class="output text_html">
-    <div>
-      <progress value='10000' class='' max='10000' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [10000/10000 00:00&lt;?]
-    </div>
-    </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array(0.00706063, dtype=float32)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">transform</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">state</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">state</span><span class="o">.</span><span class="n">position</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">sample_key</span><span class="p">,</span> <span class="n">rng_key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">rng_key</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">samples</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">chain_key</span> <span class="o">=</span> <span class="n">run_mclmc</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">logdensity_fn</span><span class="o">=</span><span class="n">logdensity_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">initial_position</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1000</span><span class="p">,)),</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">key</span><span class="o">=</span><span class="n">sample_key</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nn">Cell In[2], line 20,</span> in <span class="ni">run_mclmc</span><span class="nt">(logdensity_fn, num_steps, initial_position, key, transform, desired_energy_variance)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">kernel</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">sqrt_diag_cov</span> <span class="p">:</span> <span class="n">blackjax</span><span class="o">.</span><span class="n">mcmc</span><span class="o">.</span><span class="n">mclmc</span><span class="o">.</span><span class="n">build_kernel</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">logdensity_fn</span><span class="o">=</span><span class="n">logdensity_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">integrator</span><span class="o">=</span><span class="n">blackjax</span><span class="o">.</span><span class="n">mcmc</span><span class="o">.</span><span class="n">integrators</span><span class="o">.</span><span class="n">isokinetic_mclachlan</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">sqrt_diag_cov</span><span class="o">=</span><span class="n">sqrt_diag_cov</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># find values for L and step_size</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">blackjax_state_after_tuning</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">blackjax_mclmc_sampler_params</span><span class="p">,</span>
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="p">)</span> <span class="o">=</span> <span class="n">blackjax</span><span class="o">.</span><span class="n">mclmc_find_L_and_step_size</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">mclmc_kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">rng_key</span><span class="o">=</span><span class="n">tune_key</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="n">diagonal_preconditioning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">desired_energy_var</span><span class="o">=</span><span class="n">desired_energy_variance</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="c1"># use the quick wrapper to build a new kernel with the tuned parameters</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="n">sampling_alg</span> <span class="o">=</span> <span class="n">blackjax</span><span class="o">.</span><span class="n">mclmc</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="n">logdensity_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="n">L</span><span class="o">=</span><span class="n">blackjax_mclmc_sampler_params</span><span class="o">.</span><span class="n">L</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span>     <span class="n">step_size</span><span class="o">=</span><span class="n">blackjax_mclmc_sampler_params</span><span class="o">.</span><span class="n">step_size</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:113,</span> in <span class="ni">mclmc_find_L_and_step_size</span><span class="nt">(mclmc_kernel, num_steps, state, rng_key, frac_tune1, frac_tune2, frac_tune3, desired_energy_var, trust_in_estimate, num_effective_samples, diagonal_preconditioning)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="n">params</span> <span class="o">=</span> <span class="n">MCLMCAdaptationState</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="n">jnp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">inverse_mass_matrix</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">dim</span><span class="p">,))</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="n">part1_key</span><span class="p">,</span> <span class="n">part2_key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">rng_key</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">113</span> <span class="n">state</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">make_L_step_size_adaptation</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="n">kernel</span><span class="o">=</span><span class="n">mclmc_kernel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="n">frac_tune1</span><span class="o">=</span><span class="n">frac_tune1</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="n">frac_tune2</span><span class="o">=</span><span class="n">frac_tune2</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span>     <span class="n">desired_energy_var</span><span class="o">=</span><span class="n">desired_energy_var</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="n">trust_in_estimate</span><span class="o">=</span><span class="n">trust_in_estimate</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="n">num_effective_samples</span><span class="o">=</span><span class="n">num_effective_samples</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="n">diagonal_preconditioning</span><span class="o">=</span><span class="n">diagonal_preconditioning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="p">)(</span><span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">part1_key</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">if</span> <span class="n">frac_tune3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>     <span class="n">state</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">make_adaptation_L</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="n">mclmc_kernel</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">inverse_mass_matrix</span><span class="p">),</span> <span class="n">frac</span><span class="o">=</span><span class="n">frac_tune3</span><span class="p">,</span> <span class="n">Lfactor</span><span class="o">=</span><span class="mf">0.4</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="p">)(</span><span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">part2_key</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:244,</span> in <span class="ni">make_L_step_size_adaptation.&lt;locals&gt;.L_step_size_adaptation</span><span class="nt">(state, params, num_steps, rng_key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_steps1</span><span class="p">),</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_steps2</span><span class="p">)))</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span> <span class="c1"># run the steps</span>
+<span class="ne">--&gt; </span><span class="mi">244</span> <span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span> <span class="o">=</span> <span class="n">run_steps</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span>     <span class="n">xs</span><span class="o">=</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">L_step_size_adaptation_keys</span><span class="p">),</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="n">L</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">L</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span> <span class="c1"># determine L</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:216,</span> in <span class="ni">make_L_step_size_adaptation.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(xs, state, params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="n">streaming_avg</span> <span class="o">=</span> <span class="n">incremental_value_update</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="n">expectation</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)]),</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">incremental_val</span><span class="o">=</span><span class="n">streaming_avg</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>         <span class="n">weight</span><span class="o">=</span><span class="n">mask</span> <span class="o">*</span> <span class="n">success</span> <span class="o">*</span> <span class="n">params</span><span class="o">.</span><span class="n">step_size</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="k">return</span> <span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">adaptive_state</span><span class="p">,</span> <span class="n">streaming_avg</span><span class="p">),</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">216</span> <span class="n">run_steps</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">xs</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">jax</span><span class="o">.</span><span class="n">lax</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="n">step</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="n">init</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>         <span class="n">state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">)])),</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="n">xs</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span> <span class="k">def</span><span class="w"> </span><span class="nf">L_step_size_adaptation</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">rng_key</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="n">num_steps1</span><span class="p">,</span> <span class="n">num_steps2</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="nb">int</span><span class="p">(</span><span class="n">num_steps</span> <span class="o">*</span> <span class="n">frac_tune1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>         <span class="nb">int</span><span class="p">(</span><span class="n">num_steps</span> <span class="o">*</span> <span class="n">frac_tune2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="p">)</span>
+
+    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">9</span> <span class="n">frame</span><span class="p">]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:202,</span> in <span class="ni">make_L_step_size_adaptation.&lt;locals&gt;.step</span><span class="nt">(iteration_state, weight_and_key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="n">mask</span><span class="p">,</span> <span class="n">rng_key</span> <span class="o">=</span> <span class="n">weight_and_key</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span> <span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">adaptive_state</span><span class="p">,</span> <span class="n">streaming_avg</span> <span class="o">=</span> <span class="n">iteration_state</span>
+<span class="ne">--&gt; </span><span class="mi">202</span> <span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">adaptive_state</span><span class="p">,</span> <span class="n">success</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="n">state</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">adaptive_state</span><span class="p">,</span> <span class="n">rng_key</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span> <span class="n">x</span> <span class="o">=</span> <span class="n">ravel_pytree</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">position</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="c1"># update the running average of x, x^2</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:155,</span> in <span class="ni">make_L_step_size_adaptation.&lt;locals&gt;.predictor</span><span class="nt">(previous_state, params, adaptive_state, rng_key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="n">rng_key</span><span class="p">,</span> <span class="n">nan_key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">rng_key</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="c1"># dynamics</span>
+<span class="ne">--&gt; </span><span class="mi">155</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">inverse_mass_matrix</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="n">rng_key</span><span class="o">=</span><span class="n">rng_key</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">state</span><span class="o">=</span><span class="n">previous_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="n">L</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">L</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span>     <span class="n">step_size</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">step_size</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="c1"># step updating</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span> <span class="n">success</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">step_size_max</span><span class="p">,</span> <span class="n">energy_change</span> <span class="o">=</span> <span class="n">handle_nans</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span>     <span class="n">previous_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span>     <span class="n">next_state</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>     <span class="n">nan_key</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span> <span class="p">)</span>
+
+<span class="nn">Cell In[2], line 10,</span> in <span class="ni">run_mclmc.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(sqrt_diag_cov)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">initial_state</span> <span class="o">=</span> <span class="n">blackjax</span><span class="o">.</span><span class="n">mcmc</span><span class="o">.</span><span class="n">mclmc</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">position</span><span class="o">=</span><span class="n">initial_position</span><span class="p">,</span> <span class="n">logdensity_fn</span><span class="o">=</span><span class="n">logdensity_fn</span><span class="p">,</span> <span class="n">rng_key</span><span class="o">=</span><span class="n">init_key</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># build the kernel</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">kernel</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">sqrt_diag_cov</span> <span class="p">:</span> <span class="n">blackjax</span><span class="o">.</span><span class="n">mcmc</span><span class="o">.</span><span class="n">mclmc</span><span class="o">.</span><span class="n">build_kernel</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">logdensity_fn</span><span class="o">=</span><span class="n">logdensity_fn</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">integrator</span><span class="o">=</span><span class="n">blackjax</span><span class="o">.</span><span class="n">mcmc</span><span class="o">.</span><span class="n">integrators</span><span class="o">.</span><span class="n">isokinetic_mclachlan</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">sqrt_diag_cov</span><span class="o">=</span><span class="n">sqrt_diag_cov</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># find values for L and step_size</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">blackjax_state_after_tuning</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">blackjax_mclmc_sampler_params</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">desired_energy_var</span><span class="o">=</span><span class="n">desired_energy_variance</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="p">)</span>
+
+<span class="ne">TypeError</span>: build_kernel() got an unexpected keyword argument &#39;sqrt_diag_cov&#39;
 </pre></div>
 </div>
 </div>
@@ -569,12 +685,6 @@ u \\
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter Plot of Samples&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Scatter Plot of Samples&#39;)
-</pre></div>
-</div>
-<img alt="../_images/b2f9ca0606ac78bbdb013a21aa857524302b5fc17b4ee221d0c5caf99cd7714d.png" src="../_images/b2f9ca0606ac78bbdb013a21aa857524302b5fc17b4ee221d0c5caf99cd7714d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -597,9 +707,6 @@ u \\
 <span class="n">ground_truth_gauss</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/80c56da12e9cb259152ca5692029dc6752ae19ffa9b1ae86c4e07c9a039a0975.png" src="../_images/80c56da12e9cb259152ca5692029dc6752ae19ffa9b1ae86c4e07c9a039a0975.png" />
 </div>
 </div>
 </section>
@@ -640,30 +747,6 @@ u \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-    /* Turns off some styling */
-    progress {
-        /* gets rid of default border in Firefox and Opera. */
-        border: none;
-        /* Needs to be in here for Safari polyfill so background images work as expected. */
-        background-size: auto;
-    }
-    progress:not([value]), progress:not([value])::-webkit-progress-bar {
-        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
-    }
-    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-        background: #F44336;
-    }
-</style>
-</div><div class="output text_html">
-    <div>
-      <progress value='20000' class='' max='20000' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [20000/20000 00:00&lt;?]
-    </div>
-    </div><img alt="../_images/af05683a78d96367944ecb33936855e49a2a9db1f4bf21f77844e46c90d5ed46.png" src="../_images/af05683a78d96367944ecb33936855e49a2a9db1f4bf21f77844e46c90d5ed46.png" />
-</div>
 </div>
 <p>So here the change has little effect in this case.</p>
 </section>
@@ -671,8 +754,8 @@ u \\
 <h2>A more complex example<a class="headerlink" href="#a-more-complex-example" title="Link to this heading">#</a></h2>
 <p>We now consider a more complex model, of stock volatility.</p>
 <p>The returns <span class="math notranslate nohighlight">\(r_n\)</span> are modeled by a Student’s-t distribution whose scale (volatility) <span class="math notranslate nohighlight">\(R_n\)</span> is time varying and unknown. The prior for <span class="math notranslate nohighlight">\(\log R_n\)</span> is a Gaussian random walk, with an exponential distribution of the random walk step-size <span class="math notranslate nohighlight">\(\sigma\)</span>. An exponential prior is also taken for the Student’s-t degrees of freedom <span class="math notranslate nohighlight">\(\nu\)</span>. The generative process of the data is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2f30c8a7-b970-4c78-a919-f305efb5d36f">
-<span class="eqno">(1)<a class="headerlink" href="#equation-2f30c8a7-b970-4c78-a919-f305efb5d36f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b7f6a12e-81ab-4cd7-a020-2ac529c1361d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-b7f6a12e-81ab-4cd7-a020-2ac529c1361d" title="Permalink to this equation">#</a></span>\[\begin{align}
     &amp;r_n / R_n \sim \text{Student's-t}(\nu) \qquad
     &amp;&amp;\nu \sim \text{Exp}(\lambda = 1/10) \\ \nonumber
     &amp;\log R_n \sim \mathcal{N}(\log R_{n-1}, \sigma) \qquad
@@ -713,15 +796,6 @@ u \\
 <span class="n">setup</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading - https://d2hg8soec8ck9v.cloudfront.net/datasets/SP500.csv.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Download complete.
-</pre></div>
-</div>
-<img alt="../_images/f7fd34fb893d79efc3e37fb858a4589d8551017b468c16da4ac5f51a3ad224d1.png" src="../_images/f7fd34fb893d79efc3e37fb858a4589d8551017b468c16da4ac5f51a3ad224d1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -786,30 +860,6 @@ u \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-    /* Turns off some styling */
-    progress {
-        /* gets rid of default border in Firefox and Opera. */
-        border: none;
-        /* Needs to be in here for Safari polyfill so background images work as expected. */
-        background-size: auto;
-    }
-    progress:not([value]), progress:not([value])::-webkit-progress-bar {
-        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
-    }
-    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-        background: #F44336;
-    }
-</style>
-</div><div class="output text_html">
-    <div>
-      <progress value='20000' class='' max='20000' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [20000/20000 00:00&lt;?]
-    </div>
-    </div><img alt="../_images/0aaeef6bdd361beedd6d26a01c169f1b54adf19e1cfbad97294447742ee2f59a.png" src="../_images/0aaeef6bdd361beedd6d26a01c169f1b54adf19e1cfbad97294447742ee2f59a.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,30 +898,6 @@ u \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-    /* Turns off some styling */
-    progress {
-        /* gets rid of default border in Firefox and Opera. */
-        border: none;
-        /* Needs to be in here for Safari polyfill so background images work as expected. */
-        background-size: auto;
-    }
-    progress:not([value]), progress:not([value])::-webkit-progress-bar {
-        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
-    }
-    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-        background: #F44336;
-    }
-</style>
-</div><div class="output text_html">
-    <div>
-      <progress value='40000' class='' max='40000' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [40000/40000 00:00&lt;?]
-    </div>
-    </div><img alt="../_images/6a9d15cf6a6e1a8bd0b0b920e4a905bb021db46c8ac4b9f2f6d94419a8778f3d.png" src="../_images/6a9d15cf6a6e1a8bd0b0b920e4a905bb021db46c8ac4b9f2f6d94419a8778f3d.png" />
-</div>
 </div>
 <p>Here, we have again inspected the effect of halving <span class="math notranslate nohighlight">\(\epsilon\)</span>. This looks OK, but suppose we are interested in the hierarchial parameters in particular, which tend to be harder to infer. We now inspect the marginal of a hierarchical parameter:</p>
 <div class="cell docutils container">
@@ -893,9 +919,6 @@ u \\
 <span class="n">visualize_results_sv_marginal</span><span class="p">(</span><span class="n">new_samples</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span> <span class="s1">&#39;MCLMC (stepsize/2)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/9bcd33abe5b8ff34709ff2b9c2f5f5b0398e7e8e48021fb35388514d67ff910c.png" src="../_images/9bcd33abe5b8ff34709ff2b9c2f5f5b0398e7e8e48021fb35388514d67ff910c.png" />
 </div>
 </div>
 <p>If we care about this parameter in particular, we should reduce step size further, until the difference disappears.</p>

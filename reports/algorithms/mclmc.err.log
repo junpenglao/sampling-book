@@ -1,0 +1,178 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# run the algorithm on a high dimensional gaussian, and show two of the dimensions
+
+logdensity_fn = lambda x: -0.5 * jnp.sum(jnp.square(x))
+num_steps = 10000
+transform = lambda state, info: state.position[:2]
+
+
+sample_key, rng_key = jax.random.split(rng_key)
+samples, initial_state, params, chain_key = run_mclmc(
+    logdensity_fn=logdensity_fn,
+    num_steps=num_steps,
+    initial_position=jnp.ones((1000,)),
+    key=sample_key,
+    transform=transform,
+)
+samples.mean()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[3], line 9[0m
+[1;32m      5[0m transform [38;5;241m=[39m [38;5;28;01mlambda[39;00m state, info: state[38;5;241m.[39mposition[:[38;5;241m2[39m]
+[1;32m      8[0m sample_key, rng_key [38;5;241m=[39m jax[38;5;241m.[39mrandom[38;5;241m.[39msplit(rng_key)
+[0;32m----> 9[0m samples, initial_state, params, chain_key [38;5;241m=[39m [43mrun_mclmc[49m[43m([49m
+[1;32m     10[0m [43m    [49m[43mlogdensity_fn[49m[38;5;241;43m=[39;49m[43mlogdensity_fn[49m[43m,[49m
+[1;32m     11[0m [43m    [49m[43mnum_steps[49m[38;5;241;43m=[39;49m[43mnum_steps[49m[43m,[49m
+[1;32m     12[0m [43m    [49m[43minitial_position[49m[38;5;241;43m=[39;49m[43mjnp[49m[38;5;241;43m.[39;49m[43mones[49m[43m([49m[43m([49m[38;5;241;43m1000[39;49m[43m,[49m[43m)[49m[43m)[49m[43m,[49m
+[1;32m     13[0m [43m    [49m[43mkey[49m[38;5;241;43m=[39;49m[43msample_key[49m[43m,[49m
+[1;32m     14[0m [43m    [49m[43mtransform[49m[38;5;241;43m=[39;49m[43mtransform[49m[43m,[49m
+[1;32m     15[0m [43m)[49m
+[1;32m     16[0m samples[38;5;241m.[39mmean()
+
+Cell [0;32mIn[2], line 20[0m, in [0;36mrun_mclmc[0;34m(logdensity_fn, num_steps, initial_position, key, transform, desired_energy_variance)[0m
+[1;32m     10[0m kernel [38;5;241m=[39m [38;5;28;01mlambda[39;00m sqrt_diag_cov : blackjax[38;5;241m.[39mmcmc[38;5;241m.[39mmclmc[38;5;241m.[39mbuild_kernel(
+[1;32m     11[0m     logdensity_fn[38;5;241m=[39mlogdensity_fn,
+[1;32m     12[0m     integrator[38;5;241m=[39mblackjax[38;5;241m.[39mmcmc[38;5;241m.[39mintegrators[38;5;241m.[39misokinetic_mclachlan,
+[1;32m     13[0m     sqrt_diag_cov[38;5;241m=[39msqrt_diag_cov,
+[1;32m     14[0m )
+[1;32m     16[0m [38;5;66;03m# find values for L and step_size[39;00m
+[1;32m     17[0m (
+[1;32m     18[0m     blackjax_state_after_tuning,
+[1;32m     19[0m     blackjax_mclmc_sampler_params,
+[0;32m---> 20[0m ) [38;5;241m=[39m [43mblackjax[49m[38;5;241;43m.[39;49m[43mmclmc_find_L_and_step_size[49m[43m([49m
+[1;32m     21[0m [43m    [49m[43mmclmc_kernel[49m[38;5;241;43m=[39;49m[43mkernel[49m[43m,[49m
+[1;32m     22[0m [43m    [49m[43mnum_steps[49m[38;5;241;43m=[39;49m[43mnum_steps[49m[43m,[49m
+[1;32m     23[0m [43m    [49m[43mstate[49m[38;5;241;43m=[39;49m[43minitial_state[49m[43m,[49m
+[1;32m     24[0m [43m    [49m[43mrng_key[49m[38;5;241;43m=[39;49m[43mtune_key[49m[43m,[49m
+[1;32m     25[0m [43m    [49m[43mdiagonal_preconditioning[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m     26[0m [43m    [49m[43mdesired_energy_var[49m[38;5;241;43m=[39;49m[43mdesired_energy_variance[49m
+[1;32m     27[0m [43m[49m[43m)[49m
+[1;32m     29[0m [38;5;66;03m# use the quick wrapper to build a new kernel with the tuned parameters[39;00m
+[1;32m     30[0m sampling_alg [38;5;241m=[39m blackjax[38;5;241m.[39mmclmc(
+[1;32m     31[0m     logdensity_fn,
+[1;32m     32[0m     L[38;5;241m=[39mblackjax_mclmc_sampler_params[38;5;241m.[39mL,
+[1;32m     33[0m     step_size[38;5;241m=[39mblackjax_mclmc_sampler_params[38;5;241m.[39mstep_size,
+[1;32m     34[0m )
+
+File [0;32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:113[0m, in [0;36mmclmc_find_L_and_step_size[0;34m(mclmc_kernel, num_steps, state, rng_key, frac_tune1, frac_tune2, frac_tune3, desired_energy_var, trust_in_estimate, num_effective_samples, diagonal_preconditioning)[0m
+[1;32m    108[0m params [38;5;241m=[39m MCLMCAdaptationState(
+[1;32m    109[0m     jnp[38;5;241m.[39msqrt(dim), jnp[38;5;241m.[39msqrt(dim) [38;5;241m*[39m [38;5;241m0.25[39m, inverse_mass_matrix[38;5;241m=[39mjnp[38;5;241m.[39mones((dim,))
+[1;32m    110[0m )
+[1;32m    111[0m part1_key, part2_key [38;5;241m=[39m jax[38;5;241m.[39mrandom[38;5;241m.[39msplit(rng_key, [38;5;241m2[39m)
+[0;32m--> 113[0m state, params [38;5;241m=[39m [43mmake_L_step_size_adaptation[49m[43m([49m
+[1;32m    114[0m [43m    [49m[43mkernel[49m[38;5;241;43m=[39;49m[43mmclmc_kernel[49m[43m,[49m
+[1;32m    115[0m [43m    [49m[43mdim[49m[38;5;241;43m=[39;49m[43mdim[49m[43m,[49m
+[1;32m    116[0m [43m    [49m[43mfrac_tune1[49m[38;5;241;43m=[39;49m[43mfrac_tune1[49m[43m,[49m
+[1;32m    117[0m [43m    [49m[43mfrac_tune2[49m[38;5;241;43m=[39;49m[43mfrac_tune2[49m[43m,[49m
+[1;32m    118[0m [43m    [49m[43mdesired_energy_var[49m[38;5;241;43m=[39;49m[43mdesired_energy_var[49m[43m,[49m
+[1;32m    119[0m [43m    [49m[43mtrust_in_estimate[49m[38;5;241;43m=[39;49m[43mtrust_in_estimate[49m[43m,[49m
+[1;32m    120[0m [43m    [49m[43mnum_effective_samples[49m[38;5;241;43m=[39;49m[43mnum_effective_samples[49m[43m,[49m
+[1;32m    121[0m [43m    [49m[43mdiagonal_preconditioning[49m[38;5;241;43m=[39;49m[43mdiagonal_preconditioning[49m[43m,[49m
+[1;32m    122[0m [43m[49m[43m)[49m[43m([49m[43mstate[49m[43m,[49m[43m [49m[43mparams[49m[43m,[49m[43m [49m[43mnum_steps[49m[43m,[49m[43m [49m[43mpart1_key[49m[43m)[49m
+[1;32m    124[0m [38;5;28;01mif[39;00m frac_tune3 [38;5;241m!=[39m [38;5;241m0[39m:
+[1;32m    125[0m     state, params [38;5;241m=[39m make_adaptation_L(
+[1;32m    126[0m         mclmc_kernel(params[38;5;241m.[39minverse_mass_matrix), frac[38;5;241m=[39mfrac_tune3, Lfactor[38;5;241m=[39m[38;5;241m0.4[39m
+[1;32m    127[0m     )(state, params, num_steps, part2_key)
+
+File [0;32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:244[0m, in [0;36mmake_L_step_size_adaptation.<locals>.L_step_size_adaptation[0;34m(state, params, num_steps, rng_key)[0m
+[1;32m    241[0m mask [38;5;241m=[39m jnp[38;5;241m.[39mconcatenate((jnp[38;5;241m.[39mzeros(num_steps1), jnp[38;5;241m.[39mones(num_steps2)))
+[1;32m    243[0m [38;5;66;03m# run the steps[39;00m
+[0;32m--> 244[0m state, params, _, (_, average) [38;5;241m=[39m [43mrun_steps[49m[43m([49m
+[1;32m    245[0m [43m    [49m[43mxs[49m[38;5;241;43m=[39;49m[43m([49m[43mmask[49m[43m,[49m[43m [49m[43mL_step_size_adaptation_keys[49m[43m)[49m[43m,[49m[43m [49m[43mstate[49m[38;5;241;43m=[39;49m[43mstate[49m[43m,[49m[43m [49m[43mparams[49m[38;5;241;43m=[39;49m[43mparams[49m
+[1;32m    246[0m [43m[49m[43m)[49m
+[1;32m    248[0m L [38;5;241m=[39m params[38;5;241m.[39mL
+[1;32m    249[0m [38;5;66;03m# determine L[39;00m
+
+File [0;32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:216[0m, in [0;36mmake_L_step_size_adaptation.<locals>.<lambda>[0;34m(xs, state, params)[0m
+[1;32m    208[0m     streaming_avg [38;5;241m=[39m incremental_value_update(
+[1;32m    209[0m         expectation[38;5;241m=[39mjnp[38;5;241m.[39marray([x, jnp[38;5;241m.[39msquare(x)]),
+[1;32m    210[0m         incremental_val[38;5;241m=[39mstreaming_avg,
+[1;32m    211[0m         weight[38;5;241m=[39mmask [38;5;241m*[39m success [38;5;241m*[39m params[38;5;241m.[39mstep_size,
+[1;32m    212[0m     )
+[1;32m    214[0m     [38;5;28;01mreturn[39;00m (state, params, adaptive_state, streaming_avg), [38;5;28;01mNone[39;00m
+[0;32m--> 216[0m run_steps [38;5;241m=[39m [38;5;28;01mlambda[39;00m xs, state, params: [43mjax[49m[38;5;241;43m.[39;49m[43mlax[49m[38;5;241;43m.[39;49m[43mscan[49m[43m([49m
+[1;32m    217[0m [43m    [49m[43mstep[49m[43m,[49m
+[1;32m    218[0m [43m    [49m[43minit[49m[38;5;241;43m=[39;49m[43m([49m
+[1;32m    219[0m [43m        [49m[43mstate[49m[43m,[49m
+[1;32m    220[0m [43m        [49m[43mparams[49m[43m,[49m
+[1;32m    221[0m [43m        [49m[43m([49m[38;5;241;43m0.0[39;49m[43m,[49m[43m [49m[38;5;241;43m0.0[39;49m[43m,[49m[43m [49m[43mjnp[49m[38;5;241;43m.[39;49m[43minf[49m[43m)[49m[43m,[49m
+[1;32m    222[0m [43m        [49m[43m([49m[38;5;241;43m0.0[39;49m[43m,[49m[43m [49m[43mjnp[49m[38;5;241;43m.[39;49m[43marray[49m[43m([49m[43m[[49m[43mjnp[49m[38;5;241;43m.[39;49m[43mzeros[49m[43m([49m[43mdim[49m[43m)[49m[43m,[49m[43m [49m[43mjnp[49m[38;5;241;43m.[39;49m[43mzeros[49m[43m([49m[43mdim[49m[43m)[49m[43m][49m[43m)[49m[43m)[49m[43m,[49m
+[1;32m    223[0m [43m    [49m[43m)[49m[43m,[49m
+[1;32m    224[0m [43m    [49m[43mxs[49m[38;5;241;43m=[39;49m[43mxs[49m[43m,[49m
+[1;32m    225[0m [43m[49m[43m)[49m[[38;5;241m0[39m]
+[1;32m    227[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mL_step_size_adaptation[39m(state, params, num_steps, rng_key):
+[1;32m    228[0m     num_steps1, num_steps2 [38;5;241m=[39m (
+[1;32m    229[0m         [38;5;28mint[39m(num_steps [38;5;241m*[39m frac_tune1) [38;5;241m+[39m [38;5;241m1[39m,
+[1;32m    230[0m         [38;5;28mint[39m(num_steps [38;5;241m*[39m frac_tune2) [38;5;241m+[39m [38;5;241m1[39m,
+[1;32m    231[0m     )
+
+    [0;31m[... skipping hidden 9 frame][0m
+
+File [0;32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:202[0m, in [0;36mmake_L_step_size_adaptation.<locals>.step[0;34m(iteration_state, weight_and_key)[0m
+[1;32m    199[0m mask, rng_key [38;5;241m=[39m weight_and_key
+[1;32m    200[0m state, params, adaptive_state, streaming_avg [38;5;241m=[39m iteration_state
+[0;32m--> 202[0m state, params, adaptive_state, success [38;5;241m=[39m [43mpredictor[49m[43m([49m
+[1;32m    203[0m [43m    [49m[43mstate[49m[43m,[49m[43m [49m[43mparams[49m[43m,[49m[43m [49m[43madaptive_state[49m[43m,[49m[43m [49m[43mrng_key[49m
+[1;32m    204[0m [43m[49m[43m)[49m
+[1;32m    206[0m x [38;5;241m=[39m ravel_pytree(state[38;5;241m.[39mposition)[[38;5;241m0[39m]
+[1;32m    207[0m [38;5;66;03m# update the running average of x, x^2[39;00m
+
+File [0;32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:155[0m, in [0;36mmake_L_step_size_adaptation.<locals>.predictor[0;34m(previous_state, params, adaptive_state, rng_key)[0m
+[1;32m    152[0m rng_key, nan_key [38;5;241m=[39m jax[38;5;241m.[39mrandom[38;5;241m.[39msplit(rng_key)
+[1;32m    154[0m [38;5;66;03m# dynamics[39;00m
+[0;32m--> 155[0m next_state, info [38;5;241m=[39m [43mkernel[49m[43m([49m[43mparams[49m[38;5;241;43m.[39;49m[43minverse_mass_matrix[49m[43m)[49m(
+[1;32m    156[0m     rng_key[38;5;241m=[39mrng_key,
+[1;32m    157[0m     state[38;5;241m=[39mprevious_state,
+[1;32m    158[0m     L[38;5;241m=[39mparams[38;5;241m.[39mL,
+[1;32m    159[0m     step_size[38;5;241m=[39mparams[38;5;241m.[39mstep_size,
+[1;32m    160[0m )
+[1;32m    162[0m [38;5;66;03m# step updating[39;00m
+[1;32m    163[0m success, state, step_size_max, energy_change [38;5;241m=[39m handle_nans(
+[1;32m    164[0m     previous_state,
+[1;32m    165[0m     next_state,
+[0;32m   (...)[0m
+[1;32m    169[0m     nan_key,
+[1;32m    170[0m )
+
+Cell [0;32mIn[2], line 10[0m, in [0;36mrun_mclmc.<locals>.<lambda>[0;34m(sqrt_diag_cov)[0m
+[1;32m      5[0m initial_state [38;5;241m=[39m blackjax[38;5;241m.[39mmcmc[38;5;241m.[39mmclmc[38;5;241m.[39minit(
+[1;32m      6[0m     position[38;5;241m=[39minitial_position, logdensity_fn[38;5;241m=[39mlogdensity_fn, rng_key[38;5;241m=[39minit_key
+[1;32m      7[0m )
+[1;32m      9[0m [38;5;66;03m# build the kernel[39;00m
+[0;32m---> 10[0m kernel [38;5;241m=[39m [38;5;28;01mlambda[39;00m sqrt_diag_cov : [43mblackjax[49m[38;5;241;43m.[39;49m[43mmcmc[49m[38;5;241;43m.[39;49m[43mmclmc[49m[38;5;241;43m.[39;49m[43mbuild_kernel[49m[43m([49m
+[1;32m     11[0m [43m    [49m[43mlogdensity_fn[49m[38;5;241;43m=[39;49m[43mlogdensity_fn[49m[43m,[49m
+[1;32m     12[0m [43m    [49m[43mintegrator[49m[38;5;241;43m=[39;49m[43mblackjax[49m[38;5;241;43m.[39;49m[43mmcmc[49m[38;5;241;43m.[39;49m[43mintegrators[49m[38;5;241;43m.[39;49m[43misokinetic_mclachlan[49m[43m,[49m
+[1;32m     13[0m [43m    [49m[43msqrt_diag_cov[49m[38;5;241;43m=[39;49m[43msqrt_diag_cov[49m[43m,[49m
+[1;32m     14[0m [43m[49m[43m)[49m
+[1;32m     16[0m [38;5;66;03m# find values for L and step_size[39;00m
+[1;32m     17[0m (
+[1;32m     18[0m     blackjax_state_after_tuning,
+[1;32m     19[0m     blackjax_mclmc_sampler_params,
+[0;32m   (...)[0m
+[1;32m     26[0m     desired_energy_var[38;5;241m=[39mdesired_energy_variance
+[1;32m     27[0m )
+
+[0;31mTypeError[0m: build_kernel() got an unexpected keyword argument 'sqrt_diag_cov'
+

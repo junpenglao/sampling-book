@@ -458,12 +458,27 @@ y &amp;\sim \operatorname{Bernoulli}(p)\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/numpy/distutils/system_info.py:2159: UserWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/numpy/distutils/system_info.py:2159: UserWarning: 
     Optimized (vendor) Blas libraries are not found.
     Falls back to netlib Blas library which has worse performance.
     A better performance should be easily gained by switching
     Blas library.
   if self._calc_info(blas):
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/numpy/distutils/system_info.py:2159: UserWarning: 
+    Blas (http://www.netlib.org/blas/) libraries not found.
+    Directories to search for the libraries can be specified in the
+    numpy/distutils/site.cfg file (section [blas]) or by setting
+    the BLAS environment variable.
+  if self._calc_info(blas):
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/numpy/distutils/system_info.py:2159: UserWarning: 
+    Blas (http://www.netlib.org/blas/) sources not found.
+    Directories to search for the sources can be specified in the
+    numpy/distutils/site.cfg file (section [blas_src]) or by setting
+    the BLAS_SRC environment variable.
+  if self._calc_info(blas):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING (aesara.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
 </pre></div>
 </div>
 </div>
@@ -488,7 +503,7 @@ y &amp;\sim \operatorname{Bernoulli}(p)\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_30516/3916605363.py:3: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_table is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3948/3916605363.py:3: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_table is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
   data = pd.read_table(
 </pre></div>
 </div>
@@ -566,9 +581,9 @@ y &amp;\sim \operatorname{Bernoulli}(p)\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/functools.py:909: UserWarning: Skipping `CheckAndRaise` Op (assertion: sigma &gt; 0) as JAX tracing would remove it.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/functools.py:909: UserWarning: Skipping `CheckAndRaise` Op (assertion: sigma &gt; 0) as JAX tracing would remove it.
   return dispatch(args[0].__class__)(*args, **kw)
-/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/functools.py:909: UserWarning: Skipping `CheckAndRaise` Op (assertion: 0 &lt;= p &lt;= 1) as JAX tracing would remove it.
+/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/functools.py:909: UserWarning: Skipping `CheckAndRaise` Op (assertion: 0 &lt;= p &lt;= 1) as JAX tracing would remove it.
   return dispatch(args[0].__class__)(*args, **kw)
 </pre></div>
 </div>
@@ -640,62 +655,62 @@ y &amp;\sim \operatorname{Bernoulli}(p)\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   mean       std    median      5.0%     95.0%     n_eff     r_hat
-      beta[0]     -0.24      0.37     -0.14     -0.82      0.23     50.06      1.11
-      beta[1]     -0.85      0.12     -0.84     -1.04     -0.67    140.79      1.03
-      beta[2]      1.23      0.29      1.26      0.78      1.68     99.60      1.06
-      beta[3]     -0.71      0.16     -0.70     -0.97     -0.47    133.64      1.01
-      beta[4]      0.25      0.26      0.22     -0.11      0.69     81.54      1.07
-      beta[5]     -0.44      0.12     -0.44     -0.64     -0.26    125.05      1.03
-      beta[6]     -0.19      0.14     -0.19     -0.41      0.02     84.81      1.05
-      beta[7]     -0.25      0.18     -0.24     -0.53      0.03     37.63      1.10
-      beta[8]     -0.02      0.10     -0.00     -0.17      0.16    105.89      1.02
-      beta[9]      0.21      0.14      0.21     -0.01      0.41     63.59      1.04
-     beta[10]     -0.11      0.17     -0.07     -0.42      0.11    118.70      1.02
-     beta[11]     -0.25      0.12     -0.25     -0.43     -0.06    126.18      1.03
-     beta[12]      0.13      0.17      0.10     -0.11      0.43     76.48      1.03
-     beta[13]      0.04      0.09      0.03     -0.10      0.19     73.78      1.07
-     beta[14]     -0.06      0.07     -0.05     -0.18      0.05    192.01      1.02
-     beta[15]     -0.42      0.31     -0.38     -0.83      0.05     70.06      1.02
-     beta[16]      0.28      0.10      0.28      0.11      0.44    122.95      1.05
-     beta[17]     -0.36      0.16     -0.36     -0.60     -0.07    108.35      1.05
-     beta[18]      0.31      0.22      0.32     -0.03      0.64     50.22      1.08
-     beta[19]      0.46      0.29      0.46     -0.04      0.85     61.98      1.08
-     beta[20]      0.15      0.13      0.15     -0.05      0.36     54.16      1.08
-     beta[21]     -0.06      0.10     -0.04     -0.27      0.07     47.22      1.05
-     beta[22]     -0.02      0.16     -0.00     -0.30      0.27     91.24      1.04
-     beta[23]      0.00      0.08      0.00     -0.11      0.14    143.99      1.05
-     beta[24]      0.00      0.07      0.00     -0.10      0.13    169.15      1.03
- log_lmbda[0]     -0.15      1.01     -0.11     -2.02      1.27     55.91      1.09
- log_lmbda[1]      1.10      0.69      1.07      0.04      2.22    163.68      1.02
- log_lmbda[2]      1.37      0.74      1.26      0.17      2.51    101.77      1.04
- log_lmbda[3]      0.83      0.71      0.84     -0.47      1.97    136.12      1.04
- log_lmbda[4]     -0.06      1.08     -0.03     -1.97      1.53     74.83      1.06
- log_lmbda[5]      0.58      0.80      0.57     -0.76      1.87     93.35      1.04
- log_lmbda[6]     -0.34      1.12     -0.29     -2.13      1.45     71.04      1.03
- log_lmbda[7]     -0.03      1.03      0.04     -1.80      1.37     82.68      1.04
- log_lmbda[8]     -0.91      1.22     -0.83     -2.80      1.06    138.60      1.04
- log_lmbda[9]     -0.17      1.18     -0.03     -1.81      1.91     44.66      1.04
-log_lmbda[10]     -0.65      1.13     -0.58     -2.37      1.36    108.37      1.03
-log_lmbda[11]     -0.07      0.85     -0.08     -1.46      1.28     91.44      1.01
-log_lmbda[12]     -0.44      1.12     -0.37     -2.27      1.45     64.02      1.03
-log_lmbda[13]     -0.80      1.07     -0.80     -2.57      0.86    108.23      1.05
-log_lmbda[14]     -0.83      1.24     -0.73     -3.31      0.98     50.74      1.06
-log_lmbda[15]      0.31      0.95      0.35     -1.42      1.78    111.77      1.03
-log_lmbda[16]      0.23      0.83      0.14     -1.10      1.43    127.40      1.03
-log_lmbda[17]      0.30      0.90      0.28     -0.97      1.92    139.60      1.04
-log_lmbda[18]      0.04      1.12      0.11     -1.79      1.84     53.03      1.08
-log_lmbda[19]      0.42      1.02      0.47     -1.60      1.88     60.34      1.08
-log_lmbda[20]     -0.33      1.09     -0.23     -2.24      1.27     61.51      1.06
-log_lmbda[21]     -0.72      1.15     -0.68     -2.42      1.49    157.24      1.02
-log_lmbda[22]     -0.79      1.21     -0.65     -2.98      0.99    128.92      1.04
-log_lmbda[23]     -0.88      1.03     -0.85     -2.41      0.84    138.17      1.03
-log_lmbda[24]     -1.18      1.35     -1.06     -3.30      0.95     90.17      1.02
-      log_tau     -1.19      0.42     -1.16     -1.92     -0.56     73.23      1.04
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   mean       std    median      5.0%     95.0%     n_eff     r_hat
+      beta[0]     -0.20      0.36     -0.09     -0.83      0.22     53.88      1.07
+      beta[1]     -0.83      0.11     -0.83     -1.00     -0.65    142.62      1.04
+      beta[2]      1.28      0.30      1.29      0.75      1.73    130.22      1.04
+      beta[3]     -0.68      0.17     -0.68     -0.97     -0.43    142.90      1.04
+      beta[4]      0.19      0.27      0.09     -0.15      0.63     61.93      1.07
+      beta[5]     -0.41      0.11     -0.42     -0.58     -0.22    131.10      1.01
+      beta[6]     -0.20      0.15     -0.18     -0.43      0.03    141.96      1.02
+      beta[7]     -0.24      0.18     -0.22     -0.51      0.05    125.37      1.08
+      beta[8]     -0.01      0.07     -0.01     -0.13      0.10     89.04      1.06
+      beta[9]      0.20      0.13      0.20     -0.02      0.40    134.29      1.04
+     beta[10]     -0.15      0.18     -0.11     -0.45      0.12     75.13      1.06
+     beta[11]     -0.25      0.13     -0.24     -0.46     -0.05    103.81      1.04
+     beta[12]      0.15      0.18      0.11     -0.13      0.45    143.45      1.02
+     beta[13]      0.02      0.08      0.01     -0.11      0.17    196.99      1.01
+     beta[14]     -0.07      0.09     -0.05     -0.20      0.07     69.48      1.05
+     beta[15]     -0.35      0.28     -0.31     -0.78      0.05     36.82      1.10
+     beta[16]      0.29      0.10      0.30      0.17      0.47     67.53      1.08
+     beta[17]     -0.35      0.18     -0.34     -0.60      0.00     64.73      1.10
+     beta[18]      0.23      0.22      0.19     -0.05      0.59     60.95      1.05
+     beta[19]      0.36      0.30      0.32     -0.10      0.84     76.81      1.03
+     beta[20]      0.12      0.12      0.10     -0.04      0.35     77.32      1.06
+     beta[21]     -0.09      0.10     -0.08     -0.27      0.06     70.38      1.05
+     beta[22]     -0.02      0.14     -0.00     -0.24      0.23    104.18      1.04
+     beta[23]      0.01      0.10      0.00     -0.14      0.20     59.39      1.03
+     beta[24]      0.01      0.09      0.00     -0.13      0.17     63.83      1.03
+ log_lmbda[0]     -0.14      1.08     -0.02     -2.17      1.40    116.07      1.04
+ log_lmbda[1]      1.12      0.73      1.08     -0.16      2.12     76.25      1.09
+ log_lmbda[2]      1.47      0.71      1.42      0.39      2.67    138.40      1.03
+ log_lmbda[3]      0.89      0.69      0.85     -0.15      2.11    141.16      1.02
+ log_lmbda[4]     -0.27      1.14     -0.17     -2.31      1.56     65.35      1.06
+ log_lmbda[5]      0.55      0.72      0.51     -0.59      1.67    133.85      1.03
+ log_lmbda[6]     -0.10      0.90     -0.05     -1.62      1.38    113.82      1.02
+ log_lmbda[7]     -0.02      0.96      0.04     -1.58      1.63    136.38      1.05
+ log_lmbda[8]     -1.00      1.19     -0.89     -3.18      0.77    164.88      1.02
+ log_lmbda[9]     -0.03      0.90     -0.01     -1.36      1.55    173.66      1.02
+log_lmbda[10]     -0.33      1.21     -0.31     -2.23      1.67     86.63      1.06
+log_lmbda[11]      0.00      0.85     -0.01     -1.34      1.29    136.38      1.02
+log_lmbda[12]     -0.31      1.13     -0.21     -2.09      1.55     82.47      1.03
+log_lmbda[13]     -0.97      1.20     -0.90     -2.93      0.88    146.85      1.01
+log_lmbda[14]     -0.60      1.13     -0.54     -2.65      1.07    134.75      1.01
+log_lmbda[15]      0.22      1.01      0.31     -1.46      1.78     59.48      1.10
+log_lmbda[16]      0.25      0.82      0.22     -0.94      1.72     64.17      1.04
+log_lmbda[17]      0.31      1.03      0.36     -1.42      1.88     32.58      1.10
+log_lmbda[18]     -0.25      1.24     -0.15     -2.55      1.59     45.59      1.05
+log_lmbda[19]      0.23      1.10      0.24     -1.52      2.13    104.99      1.01
+log_lmbda[20]     -0.45      1.04     -0.42     -2.32      1.08     50.45      1.09
+log_lmbda[21]     -0.52      1.27     -0.42     -2.52      1.55     91.79      1.04
+log_lmbda[22]     -0.64      1.04     -0.63     -2.13      1.30    146.69      1.03
+log_lmbda[23]     -1.00      1.35     -0.89     -3.26      1.37    129.11      1.04
+log_lmbda[24]     -0.94      1.22     -0.78     -2.95      1.11     96.91      1.05
+      log_tau     -1.28      0.39     -1.30     -1.88     -0.62     65.88      1.05
 </pre></div>
 </div>
 </div>
@@ -738,7 +753,7 @@ log_lmbda[24]     -1.18      1.35     -1.06     -3.30      0.95     90.17      1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dc5e6c186f85b7e54ad9912022b6bae2e61196c4933346635c3ad1bf8c939371.png" src="../_images/dc5e6c186f85b7e54ad9912022b6bae2e61196c4933346635c3ad1bf8c939371.png" />
+<img alt="../_images/67af2b1fbf57312a90fed7baa513e2482e17fbb9fdc018bf675d26385bddfc7a.png" src="../_images/67af2b1fbf57312a90fed7baa513e2482e17fbb9fdc018bf675d26385bddfc7a.png" />
 </div>
 </div>
 <p>While some parameters (for instance the 15th) exhibit no particular correlations, the funnel geometry can still be observed for a few of them (4th, 13th, etc.). Ideally one would adopt a centered parametrization for those parameters to get a better approximation to the true posterior distribution, but here we also assess the ability of the sampler to explore these funnel geometries.</p>
@@ -762,7 +777,7 @@ log_lmbda[24]     -1.18      1.35     -1.06     -3.30      0.95     90.17      1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ef7fb266e6e9664d6e5bd36fedb9bad031627415646cf32dce01ccf1ae4a6733.png" src="../_images/ef7fb266e6e9664d6e5bd36fedb9bad031627415646cf32dce01ccf1ae4a6733.png" />
+<img alt="../_images/a1549ad751737949158cf45f5ffb6aad3962fe2122f9a5b8c53085e5bb9869bd.png" src="../_images/a1549ad751737949158cf45f5ffb6aad3962fe2122f9a5b8c53085e5bb9869bd.png" />
 </div>
 </div>
 <p>Indeed, many of the parameters are centered around <span class="math notranslate nohighlight">\(0\)</span>.</p>

@@ -582,7 +582,7 @@ Non-probabilistic solvers would also fail if the observations were noise-free (i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/40f729484cf058bf9dd7be4a8996988863a445dea3defe3f049831a9c847ab08.png" src="../_images/40f729484cf058bf9dd7be4a8996988863a445dea3defe3f049831a9c847ab08.png" />
+<img alt="../_images/69f7ee0017f38bf65cc85e096841bb7c701d85ef5c4af39f16f61ca1b70a9e76.png" src="../_images/69f7ee0017f38bf65cc85e096841bb7c701d85ef5c4af39f16f61ca1b70a9e76.png" />
 </div>
 </div>
 </section>
@@ -683,6 +683,20 @@ Non-probabilistic solvers would also fail if the observations were noise-free (i
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running window adaptation
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INFERENCE LOOP</span>
+<span class="n">rng_key</span><span class="p">,</span> <span class="n">sample_key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">rng_key</span><span class="p">)</span>
+<span class="n">nuts_kernel</span> <span class="o">=</span> <span class="n">blackjax</span><span class="o">.</span><span class="n">nuts</span><span class="p">(</span><span class="n">log_M</span><span class="p">,</span> <span class="o">**</span><span class="n">tuned_parameters</span><span class="p">)</span><span class="o">.</span><span class="n">step</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">inference_loop</span><span class="p">(</span>
+    <span class="n">sample_key</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">nuts_kernel</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">150</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html">
 <style>
     /* Turns off some styling */
@@ -705,18 +719,6 @@ Non-probabilistic solvers would also fail if the observations were noise-free (i
       100.00% [200/200 00:00&lt;?]
     </div>
     </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INFERENCE LOOP</span>
-<span class="n">rng_key</span><span class="p">,</span> <span class="n">sample_key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">rng_key</span><span class="p">)</span>
-<span class="n">nuts_kernel</span> <span class="o">=</span> <span class="n">blackjax</span><span class="o">.</span><span class="n">nuts</span><span class="p">(</span><span class="n">log_M</span><span class="p">,</span> <span class="o">**</span><span class="n">tuned_parameters</span><span class="p">)</span><span class="o">.</span><span class="n">step</span>
-<span class="n">states</span> <span class="o">=</span> <span class="n">inference_loop</span><span class="p">(</span>
-    <span class="n">sample_key</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">nuts_kernel</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">150</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="visualisation">
@@ -754,7 +756,7 @@ Non-probabilistic solvers would also fail if the observations were noise-free (i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6e9437745ae7f29708614ff22d6f0c15e79564281280e853a396dd1910bd2880.png" src="../_images/6e9437745ae7f29708614ff22d6f0c15e79564281280e853a396dd1910bd2880.png" />
+<img alt="../_images/10872fbd17a1e6544b5e3de8af127968bd0036df3c1e01c25b4ac397543028e9.png" src="../_images/10872fbd17a1e6544b5e3de8af127968bd0036df3c1e01c25b4ac397543028e9.png" />
 </div>
 </div>
 <p>The samples cover a perhaps surprisingly large range of potential initial conditions, but lead to the “correct” data.</p>
@@ -771,7 +773,7 @@ Non-probabilistic solvers would also fail if the observations were noise-free (i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ad1daf3e9152f45ff74a092b6828f1315cadbea1f050c6a6750fbb6a8366f97e.png" src="../_images/ad1daf3e9152f45ff74a092b6828f1315cadbea1f050c6a6750fbb6a8366f97e.png" />
+<img alt="../_images/30567c1ab6b57ce88b410dd5b0a6f21e6fe75f25b5d763e947115bfd4d59e638.png" src="../_images/30567c1ab6b57ce88b410dd5b0a6f21e6fe75f25b5d763e947115bfd4d59e638.png" />
 </div>
 </div>
 <p>Let’s add the value of <span class="math notranslate nohighlight">\(M\)</span> to the plot to see whether the sampler covers the entire region of interest.</p>
@@ -814,7 +816,7 @@ Non-probabilistic solvers would also fail if the observations were noise-free (i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/450a2c6201334c7444cad9ce3983e905f3d60a746b0dfc80c6e5266863c5db0f.png" src="../_images/450a2c6201334c7444cad9ce3983e905f3d60a746b0dfc80c6e5266863c5db0f.png" />
+<img alt="../_images/a4e7f8c3d85e92ec87db8e2ed198aabd3362587b1f0f9b9266bcf677b1f3f06f.png" src="../_images/a4e7f8c3d85e92ec87db8e2ed198aabd3362587b1f0f9b9266bcf677b1f3f06f.png" />
 </div>
 </div>
 <p>Looks great!</p>
