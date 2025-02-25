@@ -123,7 +123,7 @@ File [0;32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages
 [1;32m    243[0m         num_steps [38;5;241m*[39m frac_tune2
 [1;32m    244[0m     )
 
-    [0;31m[... skipping hidden 9 frame][0m
+    [0;31m[... skipping hidden 10 frame][0m
 
 File [0;32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:216[0m, in [0;36mmake_L_step_size_adaptation.<locals>.step[0;34m(iteration_state, weight_and_key)[0m
 [1;32m    213[0m mask, rng_key [38;5;241m=[39m weight_and_key
