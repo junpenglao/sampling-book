@@ -636,7 +636,7 @@ u \\
 <span class="g g-Whitespace">    </span><span class="mi">243</span>         <span class="n">num_steps</span> <span class="o">*</span> <span class="n">frac_tune2</span>
 <span class="g g-Whitespace">    </span><span class="mi">244</span>     <span class="p">)</span>
 
-    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">10</span> <span class="n">frame</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">9</span> <span class="n">frame</span><span class="p">]</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:216,</span> in <span class="ni">make_L_step_size_adaptation.&lt;locals&gt;.step</span><span class="nt">(iteration_state, weight_and_key)</span>
 <span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="n">mask</span><span class="p">,</span> <span class="n">rng_key</span> <span class="o">=</span> <span class="n">weight_and_key</span>
@@ -761,8 +761,8 @@ u \\
 <h2>A more complex example<a class="headerlink" href="#a-more-complex-example" title="Link to this heading">#</a></h2>
 <p>We now consider a more complex model, of stock volatility.</p>
 <p>The returns <span class="math notranslate nohighlight">\(r_n\)</span> are modeled by a Student’s-t distribution whose scale (volatility) <span class="math notranslate nohighlight">\(R_n\)</span> is time varying and unknown. The prior for <span class="math notranslate nohighlight">\(\log R_n\)</span> is a Gaussian random walk, with an exponential distribution of the random walk step-size <span class="math notranslate nohighlight">\(\sigma\)</span>. An exponential prior is also taken for the Student’s-t degrees of freedom <span class="math notranslate nohighlight">\(\nu\)</span>. The generative process of the data is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe4fadd6-619b-4e16-99c5-23fa62b8e2c6">
-<span class="eqno">(1)<a class="headerlink" href="#equation-fe4fadd6-619b-4e16-99c5-23fa62b8e2c6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9940b324-984b-4c93-9517-d48e6a3f14e0">
+<span class="eqno">(1)<a class="headerlink" href="#equation-9940b324-984b-4c93-9517-d48e6a3f14e0" title="Permalink to this equation">#</a></span>\[\begin{align}
     &amp;r_n / R_n \sim \text{Student's-t}(\nu) \qquad
     &amp;&amp;\nu \sim \text{Exp}(\lambda = 1/10) \\ \nonumber
     &amp;\log R_n \sim \mathcal{N}(\log R_{n-1}, \sigma) \qquad
