@@ -123,7 +123,7 @@ samples.mean()
 [32m    243[39m         num_steps * frac_tune2
 [32m    244[39m     )
 
-    [31m[... skipping hidden 9 frame][39m
+    [31m[... skipping hidden 10 frame][39m
 
 [36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/blackjax/adaptation/mclmc_adaptation.py:216[39m, in [36mmake_L_step_size_adaptation.<locals>.step[39m[34m(iteration_state, weight_and_key)[39m
 [32m    213[39m mask, rng_key = weight_and_key
