@@ -49,7 +49,7 @@ print("Number of steps in the adaptive algorithm: ", n_iter.item())
 
 ----- stdout -----
 CPU times: user 19 μs, sys: 0 ns, total: 19 μs
-Wall time: 22.4 μs
+Wall time: 24.1 μs
 ------------------
 
 [31m---------------------------------------------------------------------------[39m
